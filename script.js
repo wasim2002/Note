@@ -27,7 +27,7 @@ function saveNote() {
     const allNotes = document.querySelectorAll("textarea")
     let arr = []
     allNotes.forEach((noteData) => {
-        arr.push(noteData.value)
+        arr.push(noteData.value.trim())
     })
     console.log(arr);
     localStorage.setItem("notes",JSON.stringify(arr))
