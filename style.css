@@ -4,6 +4,9 @@
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
 }
+::-webkit-scrollbar{
+  display: none;
+}
 nav {
   padding-inline: 5rem;
   padding-block: 0.7rem;
