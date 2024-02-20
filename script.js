@@ -14,9 +14,21 @@ addBtn.addEventListener("click", function () {
             </div>
     `
 
+    main.appendChild(note)
+    saveNote()
     deleteNote = note.querySelector(".fa-trash-can")
-    deleteNote.addEventListener("click",function(){
+    saveBtn = note.querySelector(".fa-floppy-disk")
+    deleteNote.addEventListener("click", function () {
         note.remove()
     })
-    main.appendChild(note)
+    saveBtn.addEventListener("click", saveNote)
 })
+function saveNote() {
+    const allNotes = document.querySelectorAll("textarea")
+    let arr = []
+    allNotes.forEach((noteData) => {
+        arr.push(noteData.value)
+    })
+    console.log(arr);
+    localStorage.setItem("notes",JSON.stringify(arr))
+}
