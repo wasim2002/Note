@@ -1,7 +1,9 @@
 const addBtn = document.querySelector(".addBtn")
 const main = document.querySelector("main")
 
-addBtn.addEventListener("click", function () {
+addBtn.addEventListener("click", createNote)
+
+function createNote() {
     let note = document.createElement("div")
     note.classList.add("note")
     note.innerHTML = `
@@ -16,19 +18,20 @@ addBtn.addEventListener("click", function () {
 
     main.appendChild(note)
     saveNote()
-    deleteNote = note.querySelector(".fa-trash-can")
-    saveBtn = note.querySelector(".fa-floppy-disk")
+    let deleteNote = note.querySelector(".fa-trash-can")
+    let saveBtn = note.querySelector(".fa-floppy-disk")
     deleteNote.addEventListener("click", function () {
         note.remove()
     })
     saveBtn.addEventListener("click", saveNote)
-})
+}
+
 function saveNote() {
-    const allNotes = document.querySelectorAll("textarea")
+    const allNotes = document.querySelectorAll(".textarea textarea")
     let arr = []
     allNotes.forEach((noteData) => {
         arr.push(noteData.value.trim())
     })
     console.log(arr);
-    localStorage.setItem("notes",JSON.stringify(arr))
+    localStorage.setItem("notes", JSON.stringify(arr))
 }
