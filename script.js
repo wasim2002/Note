@@ -16,7 +16,12 @@ function addNote() {
             </div>
     `
     main.appendChild(noteDiv)
-    
+    let savebtns = noteDiv.querySelectorAll(".fa-floppy-disk")
+    savebtns.forEach((savebtn) => {
+        savebtn.addEventListener("click", function () {
+            let note = noteDiv.querySelector(".textarea textarea").value
+        })
+    })
     noteDiv.querySelector(".fa-trash-can").addEventListener("click", function () {
         noteDiv.remove()
     })
