@@ -16,13 +16,21 @@ function addNote() {
             </div>
     `
     main.appendChild(noteDiv)
-    let savebtns = noteDiv.querySelectorAll(".fa-floppy-disk")
-    savebtns.forEach((savebtn) => {
-        savebtn.addEventListener("click", function () {
-            let note = noteDiv.querySelector(".textarea textarea").value
-        })
-    })
+
+    noteDiv.querySelector(".fa-floppy-disk").addEventListener("click", savenotes)
     noteDiv.querySelector(".fa-trash-can").addEventListener("click", function () {
         noteDiv.remove()
+    })
+}
+(
+    function () {
+        let lsNotes = JSON.parse(localStorage.getItem("notes")) ?? [];
+        
+    }
+)()
+function savenotes() {
+    let textareas = document.querySelectorAll(".textarea textarea")
+    textareas.forEach((textarea) => {
+        localStorage.setItem("notes",JSON.stringify(textarea.value.trim()))
     })
 }
