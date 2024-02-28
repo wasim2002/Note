@@ -47,7 +47,7 @@ function lsAvailNotesCreate() {
 lsAvailNotesCreate()
 function savenotes() {
     let textareas = document.querySelectorAll(".textarea textarea")
-    let arr = []
+    let arr = JSON.parse(localStorage.getItem("notes")) || []
     textareas.forEach((textarea) => {
         arr.push(textarea.value.trim())
         localStorage.setItem("notes", JSON.stringify(arr))
