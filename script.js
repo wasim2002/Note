@@ -22,15 +22,34 @@ function addNote() {
         noteDiv.remove()
     })
 }
-(
-    function () {
-        let lsNotes = JSON.parse(localStorage.getItem("notes")) ?? [];
-        
-    }
-)()
+
+function lsAvailNotesCreate() {
+    let lsNotes = JSON.parse(localStorage.getItem("notes")) ?? [];
+    lsNotes.forEach((lsnote) => {
+        let noteDiv = document.createElement("div")
+        noteDiv.classList.add("note")
+        noteDiv.innerHTML = `
+        <div class="note_nav">
+                    <i class="fa-solid fa-floppy-disk" style="color: #ffffff;"></i>
+                    <i class="fa-regular fa-trash-can" style="color: #ffffff;"></i>
+                </div>
+                <div class="textarea">
+                    <textarea autofocus>${lsnote}</textarea>
+                </div>
+        `
+        main.appendChild(noteDiv)
+        noteDiv.querySelector(".fa-floppy-disk").addEventListener("click", savenotes)
+        noteDiv.querySelector(".fa-trash-can").addEventListener("click", function () {
+            noteDiv.remove()
+        })
+    })
+}
+lsAvailNotesCreate()
 function savenotes() {
     let textareas = document.querySelectorAll(".textarea textarea")
+    let arr = []
     textareas.forEach((textarea) => {
-        localStorage.setItem("notes",JSON.stringify(textarea.value.trim()))
+        arr.push(textarea.value.trim())
+        localStorage.setItem("notes", JSON.stringify(arr))
     })
 }
