@@ -9,7 +9,7 @@ function addNote() {
     noteDiv.innerHTML = `
     <div class="note_nav">
                 <i class="fa-solid fa-floppy-disk" style="color: #ffffff;"></i>
-                <i class="fa-regular fa-trash-can" style="color: #ffffff;"></i>
+                <i class="fa-regular fa-trash-can" onclick="deleteLsNote()" style="color: #ffffff;"></i>
             </div>
             <div class="textarea">
                 <textarea autofocus></textarea>
@@ -31,7 +31,7 @@ function lsAvailNotesCreate() {
         noteDiv.innerHTML = `
         <div class="note_nav">
                     <i class="fa-solid fa-floppy-disk" style="color: #ffffff;"></i>
-                    <i class="fa-regular fa-trash-can" style="color: #ffffff;"></i>
+                    <i class="fa-regular fa-trash-can" onclick="deleteLsNote()" style="color: #ffffff;"></i>
                 </div>
                 <div class="textarea">
                     <textarea autofocus>${lsnote}</textarea>
@@ -45,11 +45,17 @@ function lsAvailNotesCreate() {
     })
 }
 lsAvailNotesCreate()
+
 function savenotes() {
+    console.log("save btn clicked");
     let textareas = document.querySelectorAll(".textarea textarea")
     let arr = JSON.parse(localStorage.getItem("notes")) || []
     textareas.forEach((textarea) => {
         arr.push(textarea.value.trim())
         localStorage.setItem("notes", JSON.stringify(arr))
     })
+}
+
+function deleteLsNote() {
+    console.log("delete function called");
 }
