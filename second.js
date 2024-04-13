@@ -27,13 +27,26 @@ function createNote() {
     saveBtn.addEventListener("click", saveNote)
 
 }
+
 function saveNote() {
     const allNotes = document.querySelectorAll(".textarea textarea")
-    let arr = JSON.parse(localStorage.getItem("notes")) || []
-    // console.log(`1 - ${arr}`);
+    let arr = []
     allNotes.forEach((noteData) => {
         arr.push(noteData.value.trim())
     })
-    // console.log(`2 - ${arr}`);
     localStorage.setItem("notes", JSON.stringify(arr))
 }
+
+(
+    function () {
+        const lsNotes = JSON.parse(localStorage.getItem("notes"))
+        lsNotes.forEach((lsnote) => {
+            createNote(lsnote)
+        })
+        if (localStorage.length === 0) {
+            localStorage.removeItem("notes")
+        } else {
+            createNote()
+        }
+    }
+)()

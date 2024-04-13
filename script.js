@@ -9,7 +9,7 @@ function addNote() {
     noteDiv.innerHTML = `
     <div class="note_nav">
                 <i class="fa-solid fa-floppy-disk" style="color: #ffffff;"></i>
-                <i class="fa-regular fa-trash-can" onclick="deleteLsNote()" style="color: #ffffff;"></i>
+                <i class="fa-regular fa-trash-can" onclick="deleteLsNote(this)" style="color: #ffffff;"></i>
             </div>
             <div class="textarea">
                 <textarea autofocus></textarea>
@@ -25,13 +25,13 @@ function addNote() {
 
 function lsAvailNotesCreate() {
     let lsNotes = JSON.parse(localStorage.getItem("notes")) ?? [];
-    lsNotes.forEach((lsnote) => {
+    lsNotes.forEach((lsnote, index) => {
         let noteDiv = document.createElement("div")
         noteDiv.classList.add("note")
         noteDiv.innerHTML = `
         <div class="note_nav">
                     <i class="fa-solid fa-floppy-disk" style="color: #ffffff;"></i>
-                    <i class="fa-regular fa-trash-can" onclick="deleteLsNote()" style="color: #ffffff;"></i>
+                    <i class="fa-regular fa-trash-can" onclick="deleteLsNote(${index})" style="color: #ffffff;"></i>
                 </div>
                 <div class="textarea">
                     <textarea autofocus>${lsnote}</textarea>
@@ -47,15 +47,37 @@ function lsAvailNotesCreate() {
 lsAvailNotesCreate()
 
 function savenotes() {
-    console.log("save btn clicked");
     let textareas = document.querySelectorAll(".textarea textarea")
-    let arr = JSON.parse(localStorage.getItem("notes")) || []
-    textareas.forEach((textarea) => {
-        arr.push(textarea.value.trim())
-        localStorage.setItem("notes", JSON.stringify(arr))
-    })
+    let lsArr = JSON.parse(localStorage.getItem("notes")) || []
+    function displayTextarea() {
+        let arr = []
+        for (let textarea of textareas) {
+            arr.push(textarea.value)
+        }
+        return arr
+    }
+    function lsNotes() {
+        let arr = []
+        for (let Arr of lsArr) {
+            arr.push(Arr)
+        }
+        return arr
+    }
+    let DTA = displayTextarea()
+    let LN = lsNotes()
+    if (JSON.stringify(DTA) !== JSON.stringify(LN)) {
+        let notInLocalStorage = DTA.filter(item => !LN.includes(item))
+        notInLocalStorage.forEach((items) => {
+            LN.push(items)
+        })
+        localStorage.setItem("notes", JSON.stringify(LN))
+    } else {
+        console.log("Not Allowed");
+    }
 }
 
-function deleteLsNote() {
-    console.log("delete function called");
+function deleteLsNote(i) {
+    let lsNotes = JSON.parse(localStorage.getItem("notes")) || []
+    lsNotes.splice(i, 1)
+    localStorage.setItem("notes", JSON.stringify(lsNotes)) 
 }
