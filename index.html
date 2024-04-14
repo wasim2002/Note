@@ -1,26 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Note WebApp</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <main>
         <div class="list-sec">
-            <div class="add-btn">
-                Add
+            <div class="btn">
+                <div class="add-btn">
+                    Add Note
+                </div>
             </div>
-            <div class="list-item">
-                <input type="text" name="" id="list-title">
-                <div class="body-info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, aliquid.</div>
-                <div class="time">Thursday,13/04/2024</div>
+            <div class="list-items">
+                <div class="list-item">
+                    <input type="text" name="" id="list-title" placeholder="title here">
+                    <div class="body-info-cont">
+                        <div class="body-info">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, aliquid. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum unde molestias at nemo aliquam reprehenderit dolore quibusdam fuga quos, qui natus amet aliquid libero reiciendis enim laboriosam sequi iste accusantium.
+                        </div>
+                    </div>
+                    <div class="time">Thursday,13/04/2024</div>
+                </div>
+                <div class="list-item">
+                    <input type="text" name="" id="list-title" placeholder="title here">
+                    <div class="body-info-cont">
+                        <div class="body-info">
+                            Lorem ipsum dolor sit amet co
+                        </div>
+                    </div>
+                    <div class="time">Thursday,13/04/2024</div>
+                </div>
             </div>
+
         </div>
+        <hr>
         <div class="preview-sec">
-            <input type="text" name="" id="body-title">
+            <input type="text" name="" id="body-title" placeholder="Title...">
             <textarea class="textarea">Lorem ipsum dolor sit amet.</textarea>
         </div>
     </main>
 </body>
+
 </html>
