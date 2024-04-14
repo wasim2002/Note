@@ -74,6 +74,7 @@ hr {
   padding: 1px 3px;
   text-overflow: ellipsis;
   cursor: pointer;
+  background-color: transparent;
 }
 .body-info {
   font-size: 15px;
@@ -91,7 +92,10 @@ hr {
   font-size: 15px;
   color: #000000bf;
 }
-
+.active{
+    background-color: #bebebe9c;
+}
+/* ##################### */
 .preview-sec {
   width: 78%;
   padding-inline: 2rem;
