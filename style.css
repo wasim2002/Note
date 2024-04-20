@@ -108,6 +108,7 @@ hr {
   width: 78%;
   padding-inline: 2rem;
   padding-bottom: 2rem;
+  position: relative;
 }
 #body-title {
   border: none;
@@ -126,4 +127,13 @@ hr {
   height: 85%;
   font-size: 23px;
   color: #000000a8;
+}
+.color{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+.bg-color{
+  width: 50px;
 }
