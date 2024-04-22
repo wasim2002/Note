@@ -11,34 +11,25 @@ const listItems = document.querySelector(".list-items");
     </div>
 `
 })()
-// function getLocalStorageItem() {
-//     return JSON.parse(localStorage.getItem("notes")) || []
-// }
-// function checkingNotes() {
-//     const getLocal = getLocalStorageItem()
-//     // const existing = getLocal.find(note => note.id ==)
-// }
-// function setLocalStorageItem() {
+function getLocalStorageItem() {
+    return JSON.parse(localStorage.getItem("notes")) || []
+}
+function checkingNotes() {
+    const getLocal = getLocalStorageItem()
+    // const existing = getLocal.find(note => note.id ==)
+}
+function setLocalStorageItem() {
 
-// }
-// const poe = document.querySelector(".preview-sec")
-// poe.innerHTML = `
-//         <input type="text" name="" id="body-title" placeholder="Title...">
-//         <textarea class="textarea"></textarea>
-// `
-// const nEW = document.querySelector(".textarea")
-// nEW.addEventListener("blur", () => {
-//     const parent=nEW.parentNode
-//     console.log(parent.children[1].value);
-// })
+}
+const poe = document.querySelector(".preview-sec")
+poe.innerHTML = `
+        <input type="text" name="" id="body-title" placeholder="Title...">
+        <textarea class="textarea"></textarea>
+`
+const nEW = document.querySelector(".textarea")
+nEW.addEventListener("blur", () => {
+    const parent = nEW.parentNode
+    console.log(parent.children[1].value);
+})
 
-const bgImg=document.querySelector(".bg-color img")
-bgImg.addEventListener("click",function(){
-    bgImg.classList.add("bgColorImgScaleOff")
-    bgcOpt.classList.add("bgColorOptionsScaleOn")
-})
-const bgcOpt= document.querySelector(".bg-color-options")
-bgcOpt.addEventListener("mouseout",function(){
-    bgImg.classList.remove("bgColorImgScaleOff")
-    bgcOpt.classList.remove("bgColorOptionsScaleOn")
-})
+
