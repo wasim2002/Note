@@ -14,9 +14,15 @@ const listItems = document.querySelector(".list-items");
 function getLocalStorageItem() {
     return JSON.parse(localStorage.getItem("notes")) || []
 }
+
+let allIds = new Set()
+function uniqueId() {
+    let id  = new Date().getTime()
+}
+uniqueId()
 function checkingNotes(...get) {
     const getLocal = getLocalStorageItem()
-    // const existing = getLocal.find(note => note.id ==)
+    // const existing = getLocal.find(note => note.id ==get)
     console.log(get);
 }
 function setLocalStorageItem() {
@@ -28,11 +34,12 @@ poe.innerHTML = `
 <textarea class="textarea" placeholder="Note..."></textarea>
 `
 const nEW = document.querySelector(".textarea")
+const title = document.querySelector("#body-title")
 
 poe.addEventListener("focusout", function () {
     if (nEW.value != "") {
-        let textareaVal=nEW.value
-        let titleVal = document.querySelector("#body-title").value
-        checkingNotes(titleVal,textareaVal)
+        let textareaVal = nEW.value
+        let titleVal = title.value == "" ? "untitled" : title.value
+        checkingNotes(titleVal, textareaVal)
     }
 })
