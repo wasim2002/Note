@@ -14,22 +14,25 @@ const listItems = document.querySelector(".list-items");
 function getLocalStorageItem() {
     return JSON.parse(localStorage.getItem("notes")) || []
 }
-function checkingNotes() {
+function checkingNotes(...get) {
     const getLocal = getLocalStorageItem()
     // const existing = getLocal.find(note => note.id ==)
+    console.log(get);
 }
 function setLocalStorageItem() {
 
 }
 const poe = document.querySelector(".preview-sec")
 poe.innerHTML = `
-        <input type="text" name="" id="body-title" placeholder="Title...">
-        <textarea class="textarea"></textarea>
+<input type="text" name="" id="body-title" placeholder="Title...">
+<textarea class="textarea" placeholder="Note..."></textarea>
 `
 const nEW = document.querySelector(".textarea")
-nEW.addEventListener("blur", () => {
-    const parent = nEW.parentNode
-    console.log(parent.children[1].value);
+
+poe.addEventListener("focusout", function () {
+    if (nEW.value != "") {
+        let textareaVal=nEW.value
+        let titleVal = document.querySelector("#body-title").value
+        checkingNotes(titleVal,textareaVal)
+    }
 })
-
-
