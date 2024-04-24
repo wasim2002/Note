@@ -21,6 +21,20 @@ export default class notesView {
         <textarea class="textarea" placeholder="Note..."></textarea>
         </div>
         `
-        
+        const btnAddNote = this.root.querySelector(".add-btn")
+        const inputTitle = this.root.querySelector("#body-title")
+        const inputBody = this.root.querySelector(".textarea")
+
+        btnAddNote.addEventListener("click", () => {
+            this.onNoteAdd();
+        });
+
+        [inputTitle, inputBody].forEach(inputField => {
+            inputField.addEventListener("blur", () => {
+                const updateTitle = inputTitle.value.trim()
+                const updateBody = inputBody.value.trim()
+                this.onNoteEdit(updateTitle, updateBody)
+            })
+        });
     }
 }
