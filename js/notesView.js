@@ -37,4 +37,16 @@ export default class notesView {
             })
         });
     }
+    #createListItemHTML(id, title, body, updated) {
+        return `
+        <div class="list-item" id="${id}">
+        <input type="text" id="list-title"
+            placeholder="${title}" disabled>
+        <div class="body-info">${body}</div>
+        <div class="time"><em>
+        ${updated.tolocaleString(undefined, { dateStyle: "full", timeStyle: "short" })}
+        </em></div>
+    </div>
+`
+    }
 }
