@@ -36,6 +36,7 @@ export default class notesView {
                 this.onNoteEdit(updateTitle, updateBody)
             })
         });
+        this.updatePreviewVisibility(false)
     }
     #createListItemHTML(id, title, body, updated) {
         return `
@@ -74,5 +75,8 @@ export default class notesView {
             listItem.classList.remove("active")
         })
         this.root.querySelector(`.list-item[id="${notes.id}"]`).classList.add("active")
+    }
+    updatePreviewVisibility(visible) {
+        this.root.querySelector(".preview-sec").style.visibility = visible ? "visible" : "hidden"
     }
 }
