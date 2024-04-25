@@ -44,9 +44,17 @@ export default class notesView {
             placeholder="${title}" disabled>
         <div class="body-info">${body}</div>
         <div class="time"><em>
-        ${updated.tolocaleString(undefined, { dateStyle: "full", timeStyle: "short" })}
+        ${updated.toLocaleString(undefined, { dateStyle: "full", timeStyle: "short" })}
         </em></div>
     </div>
 `
+    }
+    updateListItems(notes) {
+        const listItemsCont = this.root.querySelector(".list-items")
+        listItemsCont.innerHTML = ""
+        for (let note of notes) {
+            const html = this.#createListItemHTML(note.id, note.title, note.body, new Date(note.updated))
+            listItemsCont.insertAdjacentHTML("beforeend", html)
+        }
     }
 }
