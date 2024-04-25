@@ -1,4 +1,4 @@
-import App from "./App"
+import App from "./App.js"
 
 const main = document.querySelector("main")
-const App = new App(main)
+const app = new App(main)

@@ -70,7 +70,7 @@ export default class notesView {
     }
     updateActiveNote(notes) {
         this.root.querySelector("#body-title").value = notes.title;
-        this.root.querySelector(".textarea").value = notes.body
+        this.root.querySelector(".textarea").value = notes.body;
         this.root.querySelectorAll(".list-item").forEach(listItem => {
             listItem.classList.remove("active")
         })
