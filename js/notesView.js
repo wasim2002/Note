@@ -40,8 +40,7 @@ export default class notesView {
     #createListItemHTML(id, title, body, updated) {
         return `
         <div class="list-item" id="${id}">
-        <input type="text" id="list-title"
-            placeholder="${title}" disabled>
+        <div id="list-title">${title}</div>
         <div class="body-info">${body}</div>
         <div class="time"><em>
         ${updated.toLocaleString(undefined, { dateStyle: "full", timeStyle: "short" })}
@@ -56,5 +55,16 @@ export default class notesView {
             const html = this.#createListItemHTML(note.id, note.title, note.body, new Date(note.updated))
             listItemsCont.insertAdjacentHTML("beforeend", html)
         }
+        listItemsCont.querySelectorAll(".list-item").forEach((listItem) => {
+            listItem.addEventListener("click", () => {
+                this.onNoteSelect(listItem.id)
+            })
+            listItem.addEventListener("dblclick", () => {
+                const checkDelete = confirm("You want to delete this Note?")
+                if (checkDelete) {
+                    this.onNoteDelete(listItem.id)
+                }
+            })
+        })
     }
 }
