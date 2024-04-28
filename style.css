@@ -73,6 +73,7 @@ hr {
   border-radius: 8px;
   position: relative;
   cursor: pointer;
+  user-select: none;
 }
 #list-title {
   border: none;
@@ -97,7 +98,7 @@ hr {
   position: absolute;
   bottom: 5px;
   right: 10px;
-  font-size: 15px;
+  font-size: 13px;
   color: #000000bf;
 }
 .active{
