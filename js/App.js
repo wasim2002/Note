@@ -33,7 +33,7 @@ export default class App {
             onNoteAdd: () => {
                 const newNote = {
                     title: "Untitled",
-                    body: "Write Note here...."
+                    body: ""
                 }
                 NoteAPI.saveNote(newNote)
                 this.#refreshNotes()
