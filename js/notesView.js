@@ -53,8 +53,14 @@ export default class notesView {
         const listItemsCont = this.root.querySelector(".list-items")
         listItemsCont.innerHTML = ""
         for (let note of notes) {
-            const html = this.#createListItemHTML(note.id, note.title, note.body, new Date(note.updated))
-            listItemsCont.insertAdjacentHTML("beforeend", html)
+            if (note.title == "") {
+                note.title = "Untitled"
+                const html = this.#createListItemHTML(note.id, note.title, note.body, new Date(note.updated))
+                listItemsCont.insertAdjacentHTML("beforeend", html)
+            } else {
+                const html = this.#createListItemHTML(note.id, note.title, note.body, new Date(note.updated))
+                listItemsCont.insertAdjacentHTML("beforeend", html)
+            }
         }
         listItemsCont.querySelectorAll(".list-item").forEach((listItem) => {
             listItem.addEventListener("click", () => {
@@ -69,7 +75,12 @@ export default class notesView {
         })
     }
     updateActiveNote(notes) {
-        this.root.querySelector("#body-title").value = notes.title;
+        if (notes.title == "Untitled") {
+            notes.title = ""
+            this.root.querySelector("#body-title").value = notes.title;
+        } else {
+            this.root.querySelector("#body-title").value = notes.title;
+        }
         this.root.querySelector(".textarea").value = notes.body;
         this.root.querySelectorAll(".list-item").forEach(listItem => {
             listItem.classList.remove("active")
