@@ -41,7 +41,7 @@ export default class notesView {
     #createListItemHTML(id, title, body, updated) {
         return `
         <div class="list-item" id="${id}">
-        <div id="list-title">${title}</div>
+        <input type="text" name="" id="list-title" placeholder="${title}" disabled>
         <div class="body-info">${body}</div>
         <div class="time"><em>
         ${updated.toLocaleString(undefined, { dateStyle: "full", timeStyle: "short" })}

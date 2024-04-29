@@ -61,8 +61,8 @@ hr {
   overflow-x: hidden;
   padding-bottom: 5px;
 }
-::-webkit-scrollbar{
-    display: none;
+::-webkit-scrollbar {
+  display: none;
 }
 .list-item {
   box-shadow: 3px 3px 15px 0px #b6b1b1;
@@ -85,6 +85,9 @@ hr {
   cursor: pointer;
   background-color: transparent;
 }
+#list-title::placeholder{
+  color: black;
+}
 .body-info {
   font-size: 15px;
   text-overflow: ellipsis;
@@ -101,8 +104,9 @@ hr {
   font-size: 13px;
   color: #000000bf;
 }
-.active{
-    background-color: #bebebe9c;
+
+.active {
+  background-color: #bebebe9c;
 }
 /* ##################### */
 .preview-sec {
@@ -128,4 +132,30 @@ hr {
   height: 85%;
   font-size: 23px;
   color: #000000a8;
+}
+/* ############################## */
+.color img {
+  width: 35px;
+  cursor: pointer;
+  position: absolute;
+  top: 25px;
+  right: 50px;
+}
+.scaleOff {
+  scale: 0;
+  transition: 0.3s ease-in-out;
+}
+.bg-option {
+  width: 152px;
+  height: 91px;
+  display: flex;
+  flex-wrap: wrap;
+  position: absolute;
+  top: 150px;
+}
+li {
+  list-style: none;
+  width: 50px;
+  height: 30px;
+  border: 1px solid black;
 }
