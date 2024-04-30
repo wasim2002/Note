@@ -65,7 +65,7 @@ export default class notesView {
         colorOpt.forEach((color) => {
             color.addEventListener("click", (e) => {
                 const bgColor = e.target.id
-                // preSec.style.backgroundColor = bgColor
+                preSec.style.backgroundColor = bgColor
             })
         })
         document.addEventListener("click", function (e) {
