@@ -84,8 +84,11 @@ hr {
   text-overflow: ellipsis;
   cursor: pointer;
   background-color: transparent;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
 }
-#list-title::placeholder{
+#list-title::placeholder {
   color: black;
 }
 .body-info {
@@ -114,6 +117,7 @@ hr {
   padding-inline: 2rem;
   padding-bottom: 2rem;
   position: relative;
+  background-color: #fff;
 }
 #body-title {
   border: none;
@@ -123,6 +127,11 @@ hr {
   font-weight: 600;
   font-size: 35px;
   padding-block: 1.5rem;
+  background-color: transparent;
+  
+}
+#body-title:focus {
+  background-color: transparent;
 }
 .textarea {
   border: none;
@@ -132,6 +141,7 @@ hr {
   height: 85%;
   font-size: 23px;
   color: #000000a8;
+  background-color: transparent;
 }
 /* ############################## */
 .color img {
@@ -140,10 +150,10 @@ hr {
   position: absolute;
   top: 25px;
   right: 50px;
+  transition: 0.3s ease-in-out;
 }
 .scaleOff {
   scale: 0;
-  transition: 0.3s ease-in-out;
 }
 .bg-option {
   width: 152px;
@@ -151,11 +161,20 @@ hr {
   display: flex;
   flex-wrap: wrap;
   position: absolute;
-  top: 150px;
+  top: 24px;
+  right: 8px;
+  align-items: center;
+  justify-content: center;
+  scale: 0;
+  transition: 0.3s ease-in-out;
+}
+.scaleOn {
+  scale: 1;
 }
 li {
   list-style: none;
   width: 50px;
   height: 30px;
   border: 1px solid black;
+  cursor: pointer;
 }
