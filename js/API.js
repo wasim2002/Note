@@ -14,6 +14,7 @@ export default class NoteAPI {
         if (existing) {
             existing.title = noteToSave.title
             existing.body = noteToSave.body
+            existing.bgColor = noteToSave.bgColor
             existing.updated = new Date().toISOString()
         } else {
             noteToSave.id = NoteAPI.uniqueID()

@@ -1,5 +1,5 @@
 export default class notesView {
-    constructor(root, { onNoteSelect, onNoteAdd, onNoteEdit, onNoteDelete } = {}) {
+    constructor(root, { onNoteSelect, onNoteAdd, onNoteEdit, onNoteDelete, onSelectColor } = {}) {
         this.root = root;
         this.onNoteSelect = onNoteSelect;
         this.onNoteAdd = onNoteAdd;
@@ -24,7 +24,7 @@ export default class notesView {
                     <li id="#FFD0D0" style="background-color: #FFD0D0;"></li>
                     <li id="#FFFBDA" style="background-color: #FFFBDA;"></li>
                     <li id="#E1F7F5" style="background-color: #E1F7F5;"></li>
-                    <li id="#F0EBE3" style="background-color: #F0EBE3;"></li>
+                    <li id="#FFFFFF" style="background-color: #FFFFFF;"></li>
                     <li id="#E8EFCF" style="background-color: #E8EFCF;"></li>
                     <li id="#BED7DC" style="background-color: #BED7DC;"></li>
                     <li id="#F5E8DD" style="background-color: #F5E8DD;"></li>
@@ -51,28 +51,36 @@ export default class notesView {
             inputField.addEventListener("blur", () => {
                 const updateTitle = inputTitle.value.trim()
                 const updateBody = inputBody.value.trim()
-                this.onNoteEdit(updateTitle, updateBody)
+                const bgColor = window.getComputedStyle(preSec).backgroundColor
+                this.onNoteEdit(updateTitle, updateBody, bgColor)
             })
         });
         this.updatePreviewVisibility(false)
 
         let flagForColorCheckout = false
+
         colorImg.addEventListener("click", () => {
             colorImg.classList.add("scaleOff");
             colorOptCont.classList.add("scaleOn");
             flagForColorCheckout = true
         })
+
         colorOpt.forEach((color) => {
             color.addEventListener("click", (e) => {
-                const bgColor = e.target.id
-                preSec.style.backgroundColor = bgColor
+                const bgColorGet = e.target.id;
+                preSec.style.backgroundColor = bgColorGet;
+                const updateTitle = inputTitle.value.trim()
+                const updateBody = inputBody.value.trim()
+                const bgColor = window.getComputedStyle(preSec).backgroundColor
+                this.onNoteEdit(updateTitle, updateBody, bgColor)
             })
         })
+        
         document.addEventListener("click", function (e) {
             if (flagForColorCheckout) {
                 if (!colorImg.contains(e.target)) {
                     colorImg.classList.remove("scaleOff");
-                colorOptCont.classList.remove("scaleOn")
+                    colorOptCont.classList.remove("scaleOn")
                     flagForColorCheckout = false
                 }
             }
@@ -121,12 +129,13 @@ export default class notesView {
             this.root.querySelector("#body-title").value = notes.title;
         } else {
             this.root.querySelector("#body-title").value = notes.title;
-        }
+        };
         this.root.querySelector(".textarea").value = notes.body;
         this.root.querySelectorAll(".list-item").forEach(listItem => {
             listItem.classList.remove("active")
-        })
-        this.root.querySelector(`.list-item[id="${notes.id}"]`).classList.add("active")
+        });
+        this.root.querySelector(`.list-item[id="${notes.id}"]`).classList.add("active");
+        this.root.querySelector(".preview-sec").style.backgroundColor = notes.bgColor;
     }
     updatePreviewVisibility(visible) {
         this.root.querySelector(".preview-sec").style.visibility = visible ? "visible" : "hidden"

@@ -33,15 +33,16 @@ export default class App {
             onNoteAdd: () => {
                 const newNote = {
                     title: "Untitled",
-                    body: ""
+                    body: "",
+                    bgColor: "rgb(255,255,255)"
                 }
                 NoteAPI.saveNote(newNote)
                 this.#refreshNotes()
             },
-            onNoteEdit: (title, body) => {
+            onNoteEdit: (title, body, bgColor) => {
                 NoteAPI.saveNote({
                     id: this.activeNote.id,
-                    title, body
+                    title, body, bgColor
                 })
                 this.#refreshNotes()
             },
